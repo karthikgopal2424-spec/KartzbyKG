@@ -1,0 +1,327 @@
+{
+  "canonical_skills": {
+    "AWS": {
+      "complementary": [
+        "Docker",
+        "Kubernetes",
+        "Python"
+      ],
+      "niche": false,
+      "related": [
+        "cloud",
+        "ec2",
+        "s3"
+      ],
+      "synonyms": [
+        "amazon web services"
+      ]
+    },
+    "CNC Machining": {
+      "complementary": [
+        "Welding",
+        "Data Analysis",
+        "Project Management"
+      ],
+      "niche": true,
+      "related": [
+        "g-code",
+        "lathe operation",
+        "milling"
+      ],
+      "synonyms": [
+        "cnc",
+        "cnc operator"
+      ]
+    },
+    "Communication": {
+      "complementary": [
+        "Project Management",
+        "Data Analysis"
+      ],
+      "niche": false,
+      "related": [
+        "stakeholder management",
+        "presentation"
+      ],
+      "synonyms": [
+        "verbal communication",
+        "written communication"
+      ]
+    },
+    "Cybersecurity": {
+      "complementary": [
+        "Python",
+        "AWS",
+        "SQL"
+      ],
+      "niche": false,
+      "related": [
+        "siem",
+        "soc",
+        "incident response"
+      ],
+      "synonyms": [
+        "infosec",
+        "information security"
+      ]
+    },
+    "Data Analysis": {
+      "complementary": [
+        "SQL",
+        "Excel",
+        "Python",
+        "Tableau"
+      ],
+      "niche": false,
+      "related": [
+        "statistics",
+        "reporting"
+      ],
+      "synonyms": [
+        "data analytics",
+        "data analyst"
+      ]
+    },
+    "Docker": {
+      "complementary": [
+        "Kubernetes",
+        "AWS",
+        "Python"
+      ],
+      "niche": false,
+      "related": [
+        "kubernetes",
+        "ci/cd",
+        "AWS"
+      ],
+      "synonyms": [
+        "containers"
+      ]
+    },
+    "Excel": {
+      "complementary": [
+        "Data Analysis",
+        "SQL",
+        "Power BI"
+      ],
+      "niche": false,
+      "related": [
+        "pivot tables",
+        "vlookup"
+      ],
+      "synonyms": [
+        "spreadsheets",
+        "microsoft excel"
+      ]
+    },
+    "HVAC": {
+      "complementary": [
+        "Welding",
+        "Project Management",
+        "Communication"
+      ],
+      "niche": true,
+      "related": [
+        "refrigeration",
+        "ductwork",
+        "epa 608"
+      ],
+      "synonyms": [
+        "heating ventilation air conditioning",
+        "hvac technician"
+      ]
+    },
+    "Java": {
+      "complementary": [
+        "SQL",
+        "AWS",
+        "Docker"
+      ],
+      "niche": false,
+      "related": [
+        "spring",
+        "jvm",
+        "backend"
+      ],
+      "synonyms": []
+    },
+    "Kubernetes": {
+      "complementary": [
+        "Docker",
+        "AWS",
+        "Python"
+      ],
+      "niche": false,
+      "related": [
+        "containers",
+        "helm"
+      ],
+      "synonyms": [
+        "k8s"
+      ]
+    },
+    "Machine Learning": {
+      "complementary": [
+        "Python",
+        "SQL",
+        "Data Analysis"
+      ],
+      "niche": false,
+      "related": [
+        "scikit-learn",
+        "model training",
+        "mlops"
+      ],
+      "synonyms": [
+        "ml",
+        "ai/ml"
+      ]
+    },
+    "Phlebotomy": {
+      "complementary": [
+        "Communication",
+        "Data Analysis",
+        "Project Management"
+      ],
+      "niche": true,
+      "related": [
+        "venipuncture",
+        "specimen handling",
+        "patient care"
+      ],
+      "synonyms": [
+        "phlebotomist"
+      ]
+    },
+    "Power BI": {
+      "complementary": [
+        "Tableau",
+        "SQL",
+        "Excel"
+      ],
+      "niche": false,
+      "related": [
+        "dax",
+        "data visualization"
+      ],
+      "synonyms": [
+        "powerbi"
+      ]
+    },
+    "Project Management": {
+      "complementary": [
+        "Communication",
+        "Data Analysis",
+        "Excel"
+      ],
+      "niche": false,
+      "related": [
+        "agile",
+        "scrum",
+        "jira"
+      ],
+      "synonyms": [
+        "pm",
+        "project manager"
+      ]
+    },
+    "Python": {
+      "complementary": [
+        "SQL",
+        "Data Analysis",
+        "Machine Learning"
+      ],
+      "niche": false,
+      "related": [
+        "pandas",
+        "numpy",
+        "scripting",
+        "data pipelines"
+      ],
+      "synonyms": [
+        "py"
+      ]
+    },
+    "React": {
+      "complementary": [
+        "Java",
+        "AWS",
+        "Communication"
+      ],
+      "niche": false,
+      "related": [
+        "javascript",
+        "frontend",
+        "typescript"
+      ],
+      "synonyms": [
+        "react.js",
+        "reactjs"
+      ]
+    },
+    "SQL": {
+      "complementary": [
+        "Python",
+        "Data Analysis",
+        "Power BI"
+      ],
+      "niche": false,
+      "related": [
+        "databases",
+        "query optimization",
+        "etl"
+      ],
+      "synonyms": [
+        "structured query language"
+      ]
+    },
+    "Tableau": {
+      "complementary": [
+        "Power BI",
+        "SQL",
+        "Data Analysis"
+      ],
+      "niche": false,
+      "related": [
+        "data visualization",
+        "bi dashboards"
+      ],
+      "synonyms": []
+    },
+    "Welding": {
+      "complementary": [
+        "CNC Machining",
+        "Project Management",
+        "Communication"
+      ],
+      "niche": true,
+      "related": [
+        "fabrication",
+        "blueprint reading",
+        "metalwork"
+      ],
+      "synonyms": [
+        "mig welding",
+        "tig welding"
+      ]
+    }
+  },
+  "generated_for_date": "2026-09-02",
+  "locations": [
+    "Chicago",
+    "New York",
+    "London",
+    "Bangalore",
+    "Singapore",
+    "Remote"
+  ],
+  "sectors": [
+    "Banking",
+    "Healthcare",
+    "Retail",
+    "Technology",
+    "Manufacturing",
+    "Education",
+    "Logistics"
+  ]
+}

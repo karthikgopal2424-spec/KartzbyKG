@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skillkartz"
+version = "0.1.0"
+description = "SKILLKARTZ / ForecastAI - supervisor-led multi-bot career forecasting and upskilling agent (AI course capstone)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Karthik Gopal" }]
+keywords = ["multi-agent", "career", "forecasting", "capstone", "tree-of-thought", "rag"]
+dependencies = []
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=7"]
+
+[project.scripts]
+skillkartz = "skillkartz.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
