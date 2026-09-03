@@ -47,9 +47,11 @@ personalised, current, **auditable** answer to that question. ForecastAI does:
 
 ```bash
 cd skillkartz
-python3 -m pytest -q                       # 48 tests, ~0.3s, no deps beyond pytest
+python3 -m pytest -q                       # 48 tests core, ~0.3s, no deps beyond pytest
 python3 examples/demo.py                    # seven scenarios, one per pipeline path
 ```
+
+(`pip install -e ".[dev]"` adds the optional-backend packages and runs 64 tests.)
 
 Run a single query (no install needed — just set the path):
 
@@ -151,6 +153,33 @@ back to the design document.
 
 ---
 
+## Pluggable backends (optional)
+
+The default build is dependency-free and deterministic. Two seams can be swapped
+for their framework equivalents without touching a single agent — same
+`PipelineResult`, same numbers:
+
+| Seam | Default | Framework option | Install |
+|---|---|---|---|
+| Orchestration | hand-rolled `SupervisorBot` | **LangGraph** `StateGraph` (`graph_pipeline.py`) — conditional edges, the Governance recalculation cycle as a real loop, a checkpointer, a `draw_mermaid()` diagram | `pip install -e ".[graph]"` |
+| Semantic retrieval | TF-IDF in `text.py` | **LangChain** `Embeddings` + `InMemoryVectorStore` + `VectorStoreRetriever` (`retrieval_langchain.py`); default embedding is a deterministic offline token-hash, swappable for a real model via `[embeddings-hf]` | `pip install -e ".[embeddings]"` |
+
+```bash
+python3 -m skillkartz "Is Python in demand for banking jobs?" --backend graph
+python3 -m skillkartz "React demand" --sector Technology --retrieval langchain
+# or: export SKILLKARTZ_BACKEND=graph  SKILLKARTZ_RETRIEVAL=langchain
+```
+
+```python
+ForecastAIPipeline(backend="graph", retrieval="langchain")
+```
+
+The point of the exercise: the number-producing and decision-making paths stay
+pure Python and deterministic; only the plumbing changes. Parity is enforced by
+`tests/test_graph_backend.py` and `tests/test_retrieval_langchain.py`.
+
+---
+
 ## Project layout
 
 ```
@@ -165,6 +194,8 @@ skillkartz/
 │   ├── config.py               every governed threshold in one place
 │   ├── models.py               typed dataclasses passed between agents
 │   ├── text.py                 dependency-free TF-IDF + cosine similarity
+│   ├── graph_pipeline.py       optional LangGraph orchestration backend
+│   ├── retrieval_langchain.py  optional LangChain Embeddings + VectorStore backend
 │   ├── datastore.py            corpus loading, retrieval, dedupe, co-occurrence mining
 │   ├── llm.py                  optional Claude narration (guarded, offline fallback)
 │   ├── pipeline.py             ForecastAIPipeline — the public entry point

@@ -15,7 +15,12 @@ dependencies = []
 
 [project.optional-dependencies]
 llm = ["anthropic>=0.40"]
-dev = ["pytest>=7"]
+dev = ["pytest>=7", "langgraph>=0.2", "langchain-core>=0.3", "numpy>=1.24"]
+# Optional pluggable backends. Defaults need none of these.
+graph = ["langgraph>=0.2"]                       # LangGraph orchestration backend
+embeddings = ["langchain-core>=0.3", "numpy>=1.24"]  # LangChain retrieval backend
+embeddings-hf = ["langchain-huggingface>=0.1", "sentence-transformers>=2.2"]  # real model
+all = ["skillkartz[llm,graph,embeddings]"]
 
 [project.scripts]
 skillkartz = "skillkartz.cli:main"
@@ -26,3 +31,7 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+filterwarnings = [
+    "ignore::DeprecationWarning:langgraph.*",
+    "ignore:.*allowed_objects.*",
+]

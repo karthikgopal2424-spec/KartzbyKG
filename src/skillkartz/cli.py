@@ -36,6 +36,10 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--format", dest="preferred_format",
                    help="online | in-person | hybrid")
     p.add_argument("--data-dir", type=Path, help="override the data directory")
+    p.add_argument("--backend", choices=("native", "graph"),
+                   help="orchestration backend (graph needs skillkartz[graph])")
+    p.add_argument("--retrieval", choices=("tfidf", "langchain"),
+                   help="semantic-retrieval backend (langchain needs skillkartz[embeddings])")
     p.add_argument("--json", action="store_true", help="emit the full result as JSON")
     p.add_argument("--trace", action="store_true", help="print the agent trace")
     p.add_argument("--llm", action="store_true",
@@ -52,7 +56,8 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     llm = LLMClient(enabled=True) if args.llm else None
-    pipe = ForecastAIPipeline(data_dir=args.data_dir, llm=llm)
+    pipe = ForecastAIPipeline(data_dir=args.data_dir, llm=llm,
+                              backend=args.backend, retrieval=args.retrieval)
 
     overrides = {
         k: getattr(args, k)

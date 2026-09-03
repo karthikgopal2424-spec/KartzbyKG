@@ -31,7 +31,7 @@ implements it. Use this when grading the capstone against the design.
 | 10.2 thought / node / branch / depth | `_Node`, branching, `tot_max_depth` | `agents/upskilling.py`, `config.py` |
 | 10.3 beam search + rubric + hard-constraint prune + one relaxation | `_beam_search`, `_score_step` | `agents/upskilling.py` |
 | 10.3 "reports that no roadmap fits rather than fabricating" | infeasible result | `agents/upskilling.py` (`Roadmap.feasible = False`) |
-| 10.4 ToT roles → tools (LangChain / CrewAI / MCP) | conceptual; this build is dependency-free | documented in `agents/upskilling.py` docstring |
+| 10.4 ToT roles → tools (LangChain / CrewAI / MCP) | default build is dependency-free; optional LangGraph + LangChain backends are wired as drop-in seams | `graph_pipeline.py` (LangGraph `StateGraph`), `retrieval_langchain.py` (LangChain `Embeddings` + `VectorStore`), selected via `ForecastAIPipeline(backend=…, retrieval=…)` |
 | 11. Multi-agent architecture — 7 core + 2 conditional | agent roster | `agents/__init__.py`, `agents/supervisor.py` |
 | 11. Hybrid coordination (star + fan-out + conditional branch + feedback loop) | orchestration shape | `agents/supervisor.py::run` |
 | 12. Safety & Intervention Plan — risk table | per-stage risks | mirrored by the checks in `agents/governance_qa.py` |

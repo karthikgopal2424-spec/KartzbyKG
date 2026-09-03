@@ -88,6 +88,16 @@ class Settings:
     llm_model: str = os.environ.get("SKILLKARTZ_MODEL", "claude-sonnet-5")
     llm_enabled: bool = os.environ.get("SKILLKARTZ_LLM", "0") == "1"
 
+    # --- Pluggable backends (optional; defaults keep the build dependency-free) --
+    orchestrator: str = os.environ.get("SKILLKARTZ_BACKEND", "native")
+    """'native' = the hand-rolled Supervisor; 'graph' = the LangGraph StateGraph
+    (needs skillkartz[graph]). Same agents and same PipelineResult either way."""
+
+    retrieval_backend: str = os.environ.get("SKILLKARTZ_RETRIEVAL", "tfidf")
+    """'tfidf' = the dependency-free index in text.py; 'langchain' = a LangChain
+    Embeddings + VectorStore (needs skillkartz[embeddings]). Only the
+    semantic-drift surface differs; the headline % is identical."""
+
     data_dir: Path = DEFAULT_DATA_DIR
 
 

@@ -46,15 +46,33 @@ class LocalSignal:
 
 
 class DataStore:
-    def __init__(self, data_dir: Optional[Path] = None) -> None:
+    def __init__(
+        self,
+        data_dir: Optional[Path] = None,
+        retrieval_backend: Optional[str] = None,
+    ) -> None:
         self.data_dir = Path(data_dir or SETTINGS.data_dir)
+        self.retrieval_backend = (retrieval_backend or SETTINGS.retrieval_backend).lower()
         self.postings: list[JobPosting] = []
         self.taxonomy: dict = {}
         self.courses: list[Course] = []
         self.local_signals: list[LocalSignal] = []
-        self._index = TfidfIndex()
+        self._index = self._make_index(self.retrieval_backend)
         self._as_of: str = date.today().isoformat()
         self._load()
+
+    @staticmethod
+    def _make_index(backend: str):
+        """Both indexes expose the same build/query_vector/score surface, so
+        ``retrieve`` is backend-agnostic."""
+        if backend in ("tfidf", "", None):
+            return TfidfIndex()
+        if backend == "langchain":
+            from .retrieval_langchain import LangChainSemanticIndex
+            return LangChainSemanticIndex()
+        raise ValueError(
+            f"unknown retrieval_backend {backend!r} (use 'tfidf' or 'langchain')"
+        )
 
     # ------------------------------------------------------------------ #
     def _load(self) -> None:
