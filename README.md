@@ -96,6 +96,35 @@ off (the default) the same content is emitted from a deterministic template.
 
 ---
 
+## Web UI
+
+A dependency-free, offline browser front end ships alongside the CLI — same
+`ForecastAIPipeline`, same governed answers, no extra installs and no API key.
+
+```bash
+PYTHONPATH=src python3 serve.py                 # http://127.0.0.1:8000
+PYTHONPATH=src python3 serve.py --port 9000
+PYTHONPATH=src python3 serve.py --host 0.0.0.0  # expose on the LAN (be deliberate)
+```
+
+Open the printed URL in a browser. The left column is a chat-style
+conversation — type a question, or open "Refine your question" to pin the
+skill/sector/location or add a budget, timeframe and format. The right column
+publishes the full governed analysis for the latest query: the chain-of-thought
+derivation, the complete agent trace in order, session memory (remembered
+results, accepted/rejected feedback, provider ranking nudges), corpus/index
+stats, and the raw JSON result.
+
+| Route | Returns |
+|---|---|
+| `GET /` | the single-page app |
+| `POST /` | no-JS fallback — runs the pipeline, renders the answer server-side |
+| `GET`/`POST /api/query` | JSON API (same fields as the CLI flags) |
+| `GET /api/resources` | corpus + index stats, session run counters |
+| `GET /api/memory` | the Supervisor's session memory |
+
+---
+
 ## Architecture
 
 ```
@@ -203,6 +232,7 @@ skillkartz/
 │   └── agents/                 the ten bots + the supervisor
 ├── tests/                      48 pytest tests, one file per component
 ├── examples/demo.py            seven end-to-end scenarios
+├── serve.py                    browser UI — stdlib-only HTTP server, no deps
 └── docs/DESIGN_MAP.md          design-doc → code cross-reference
 ```
 
