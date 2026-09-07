@@ -178,7 +178,9 @@ parallel fan-out for the two independent retrieval bots, a conditional graph
 branch for the niche pair, and one targeted feedback loop from Governance.
 
 See [`docs/DESIGN_MAP.md`](docs/DESIGN_MAP.md) for a section-by-section mapping
-back to the design document.
+back to the design document, and
+[`docs/IMPLEMENTATION_OVERVIEW.md`](docs/IMPLEMENTATION_OVERVIEW.md) for the
+frameworks / tools / models / APIs / libraries and how each supports the design.
 
 ---
 
