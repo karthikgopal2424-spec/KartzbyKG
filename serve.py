@@ -39,7 +39,7 @@ from urllib.parse import parse_qs, urlparse
 from skillkartz import ForecastAIPipeline
 
 SECTORS = [
-    "Banking", "Education", "Healthcare", "Logistics",
+    "", "Banking", "Education", "Healthcare", "Logistics",
     "Manufacturing", "Retail", "Technology",
 ]
 FORMATS = ["", "online", "in-person", "hybrid"]
